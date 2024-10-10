@@ -90,3 +90,9 @@ custom_rules:
     regex: "DispatchQueue\\.main\\.async \\{"
     message: "Prefer Task { @MainActor in } over Dispatch.main.async { }"
     severity: warning
+  discourage_boolean_optional_default_value:
+    included: ".*\\.swift"
+    name: "Optional Bool with default value"
+    regex: "\\b.* (false|true)\\b"
+    message: "Prefer use of == true than ?? false or == false than ?? true"
+    severity: warning
