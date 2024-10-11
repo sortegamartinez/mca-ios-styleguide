@@ -96,3 +96,9 @@ custom_rules:
     regex: "\\b.* \\?\\? false\\b"
     message: "Prefer use of == true than ?? false"
     severity: warning
+  infinite_loop_getter_error:
+    included: ".*\\.swift"
+    name: "Infinite loop getter"
+    regex: "(var\\s+(\\w+)\\s*:\\s*\\w+(\\?|\\s)\\s*\\{\\s*get\\s*\\{\\s*return\\s*(self.)\\2\\s*\\s*\\}\\s*\\}|var\\s+(\\w+)\\s*:\\s*\\w+(\\?|\\s)\\s*\\{\\s*return\\s*(self.)\\5\\s*\\s*\\})"
+    message: "This cause an infiite loop that will cause a Crash."
+    severity: error
