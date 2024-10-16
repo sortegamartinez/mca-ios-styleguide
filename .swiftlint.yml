@@ -93,7 +93,7 @@ custom_rules:
   discourage_boolean_optional_default_value:
     included: ".*\\.swift"
     name: "Optional Bool with default value"
-    regex: "\\b.* \\?\\? false\\b"
+    regex: "\\b\\w+\\s*(as\\?\\s*Bool\\s*)?\\?\\?\\s*false\\b"
     message: "Prefer use of == true than ?? false"
     severity: warning
   infinite_loop_getter_error:
