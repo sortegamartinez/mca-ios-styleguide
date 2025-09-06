@@ -29,6 +29,7 @@ disabled_rules: # rule identifiers to exclude from running
   - unused_optional_binding
 #  - multiple_closures_with_trailing_closure
   - notification_center_detachment
+  - switch_case_alignment
 opt_in_rules: # some rules are only opt-in
   - empty_count
   - multiline_parameters
@@ -90,3 +91,15 @@ custom_rules:
     regex: "DispatchQueue\\.main\\.async \\{"
     message: "Prefer Task { @MainActor in } over Dispatch.main.async { }"
     severity: warning
+  discourage_boolean_optional_default_value:
+    included: ".*\\.swift"
+    name: "Optional Bool with default value"
+    regex: "\\b\\w+\\s*(as\\?\\s*Bool\\s*)?\\?\\?\\s*false\\b"
+    message: "Prefer use of == true than ?? false"
+    severity: warning
+  infinite_loop_getter_error:
+    included: ".*\\.swift"
+    name: "Infinite loop getter"
+    regex: "(var\\s+(\\w+)\\s*:\\s*\\w+(\\?|\\s)\\s*\\{\\s*get\\s*\\{\\s*return\\s*(self.)\\2\\s*\\s*\\}\\s*\\}|var\\s+(\\w+)\\s*:\\s*\\w+(\\?|\\s)\\s*\\{\\s*return\\s*(self.)\\5\\s*\\s*\\})"
+    message: "This cause an infiite loop that will cause a Crash."
+    severity: error
